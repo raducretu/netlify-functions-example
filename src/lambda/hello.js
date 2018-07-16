@@ -2,13 +2,20 @@ exports.handler = function(event, context, callback) {
   console.log('test');
   console.log(context);
   console.log(event);
+  var ref = event.headers.referer || false;
+  if( ! false ){
+  callback(null, {
+    statusCode: 302,
+    headers: {
+      Location: 'https://google.com'
+    }
+  });
+  }
   callback(null, {
     statusCode: 200,
-    body: 'test',
+    body: 'testare',
       "headers": {
-      "X-Test-Header": "baking experiment",
-      "Set-Cookie": "cookie1=chocolate-chip",
-      "Set-Cookie": "cookie2=oatmeal"
+      "Set-Cookie": "cookie2=" + ref
     }
   });
 };
